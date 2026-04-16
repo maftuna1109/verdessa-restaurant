@@ -150,7 +150,7 @@ function App() {
         </div>
 
 
-        <div className="relative z-10 justify-center text-center text-white pt-30">
+        <div className="relative z-10 justify-center text-center text-white pt-45">
           <h1 className="text-5xl text-gray-200 font-medium">
             Welcome to our <br />
             <span className="text-[#886e42]">Restaurant</span> Experience
