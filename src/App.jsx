@@ -24,6 +24,8 @@ import m7 from "./images/m7.jpg"
 import himg from "./images/himg.jpg"
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 
@@ -65,10 +67,30 @@ function App() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+useEffect(() => {
+  AOS.init({
+    duration: 1000,
+    once: false
+  });
+
+  setTimeout(() => {
+    AOS.refresh();
+  }, 100);
+}, []);
+useEffect(() => {
+  AOS.init({
+    duration: 1000,
+    once: false
+  });
+
+  setTimeout(() => {
+    AOS.refresh();
+  }, 300);
+}, []);
 
   return (
     <div className={darkMode ? "bg-black text-white" : "bg-white text-black"}>
-      <div className="relative h-screen w-full overflow-hidden">
+      <div className="relative h-screen w-full">
         <video
           className="absolute top-0 left-0 w-full h-full object-cover"
           src="https://www.pexels.com/download/video/31631562/"
@@ -79,7 +101,7 @@ function App() {
         <div className="absolute inset-0 bg-black/50"></div>
 
 
-        <div
+        <div data-aos="zoom-in"
           className={`fixed top-0 left-0 w-full flex items-center justify-center py-3 gap-30 z-50 transition-all duration-300 ${scrolled ? "backdrop-blur-md bg-black/10 shadow-md" : "bg-transparent backdrop-blur-0"}`}
         >
           <div>
@@ -151,11 +173,11 @@ function App() {
 
 
         <div className="relative z-10 justify-center text-center text-white pt-45">
-          <h1 className="text-5xl text-gray-200 font-medium">
+          <h1 data-aos="zoom-in" className="text-5xl text-gray-200 font-medium">
             Welcome to our <br />
             <span className="text-[#886e42]">Restaurant</span> Experience
           </h1>
-          <p className="mt-6 text-gray-300">
+          <p data-aos="zoom-in" className="mt-6 text-gray-300">
             Where taste meets elegance. We combine exquisite flavors with a
             luxurious dining experience. <br /> Every dish is crafted with passion
             and the finest ingredients.
@@ -165,15 +187,15 @@ function App() {
       </div>
 
       <div id="about" className="about scroll-mt-24">
-        <h1 className="text-center text-4xl font-medium pt-20 pb-10">About Our Restaurant</h1>
-        <h1 className="text-3xl font-medium pb-7 text-center text-[#886e42]">Atmosphera</h1>
+        <h1 data-aos="fade-up" className="text-center text-4xl font-medium pt-20 pb-10">About Our Restaurant</h1>
+        <h1 data-aos="fade-up" className="text-3xl font-medium pb-7 text-center text-[#886e42]">Atmosphera</h1>
         <div className="flex justify-center items-center gap-20">
-          <div>
+          <div data-aos="fade-up">
             <img className="w-120 rounded-xl" src={inside} alt="" />
             <h1 className="text-3xl font-medium text-[#886e42]">Interior</h1>
             <p>An exquisite interior designed to deliver comfort, style, and a truly <br /> elevated dining experience.</p>
           </div>
-          <div>
+          <div data-aos="fade-up">
             <img className="w-120 rounded-xl" src={outside} alt="" />
             <h1 className="text-3xl font-medium text-[#886e42]">Exterior</h1>
             <p>A sophisticated exterior that sets the stage for an extraordinary <br /> culinary journey, where elegance and excellence come together.</p>
@@ -181,17 +203,17 @@ function App() {
         </div>
 
         <div>
-          <h1 className="text-3xl font-medium pb-7 text-center text-[#886e42] pt-15 pb-7">Inside Our Kitchen Philosophy</h1>
+          <h1 data-aos="fade-up" className="text-3xl font-medium pb-7 text-center text-[#886e42] pt-15 pb-7">Inside Our Kitchen Philosophy</h1>
           <div className="flex justify-center items-center gap-12">
-            <div>
+            <div data-aos="fade-up">
               <img className="w-75 rounded-lg pb-3" src={rasm2} alt="" />
               <p>Carefully selected fresh ingredients form <br /> the foundation of every exceptional dish.</p>
             </div>
-            <div>
+            <div data-aos="fade-up">
               <img className="w-75 rounded-lg pb-3" src={rasm1} alt="" />
               <p>Expert techniques and passion-driven cooking <br /> bring out the true character of each ingredient.</p>
             </div>
-            <div>
+            <div data-aos="fade-up">
               <img className="w-75 rounded-lg pb-3" src={rasm3} alt="" />
               <p>Thoughtful presentation transforms every <br /> dish into a refined culinary experience.</p>
             </div>
@@ -203,8 +225,8 @@ function App() {
 
 
       <div id="menu" className="menu scroll-mt-24">
-        <h1 className="text-center text-4xl font-medium pt-20 pb-10">Menu</h1>
-        <h1 className="text-3xl font-medium pb-7 text-center text-[#886e42]">Drinks</h1>
+        <h1 data-aos="fade-up" className="text-center text-4xl font-medium pt-20 pb-10">Menu</h1>
+        <h1 data-aos="fade-up" className="text-3xl font-medium pb-7 text-center text-[#886e42]">Drinks</h1>
         <div>
           <Swiper
             slidesPerView={1}
@@ -216,7 +238,7 @@ function App() {
           >
             {data.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="p-3">
+  <div className="p-3" data-aos="fade-up">
                   <div>
                     <img
                       className="w-55 rounded-md"
@@ -236,7 +258,7 @@ function App() {
         </div>
 
         <div className="pt-20">
-          <h1 className="text-3xl font-medium pb-7 text-center text-[#886e42]">
+          <h1 data-aos="fade-up" className="text-3xl font-medium pb-7 text-center text-[#886e42]">
             Dishes
           </h1>
 
@@ -250,7 +272,7 @@ function App() {
           >
             {dishes.map((item, index) => (
               <SwiperSlide key={index}>
-                <div className="p-3">
+  <div className="p-3" data-aos="fade-up">
                   <div>
                     <img
                       className="w-55 rounded-md"
@@ -280,7 +302,7 @@ function App() {
           <img className="w-full h-80 object-cover mt-5" src={himg} alt="" />
         </div>
         <div className="flex justify-center gap-80 pt-10">
-          <div>
+          <div data-aos="fade-up">
             <h1 className="text-2xl font-medium text-[#886e42]">DINING ROOM</h1>
             <p className="text-xl font-medium">Lunch</p>
             <p>Monday - Friday</p>
@@ -289,7 +311,7 @@ function App() {
             <p>Monday - Saturday</p>
             <p>5:30pm - 10:45pm</p>
           </div>
-          <div>
+          <div data-aos="fade-up">
             <h1 className="text-2xl font-medium text-[#886e42]">BAR LOUNGE</h1>
             <p className="text-xl font-medium">Dinner</p>
             <p>Monday - Thursday</p>
@@ -302,24 +324,28 @@ function App() {
 
 
 
-      <div id="reservation" className="reservation  scroll-mt-24">
-        <h1 className="text-center text-4xl font-medium pt-20 pb-10">Make a Reservation</h1>
+      <div id="reservation" className="reservation scroll-mt-24">
+  <h1 className="text-center text-4xl font-medium pt-20 pb-10">
+    Make a Reservation
+  </h1>
 
-        <div className="grid justify-center">
-          <div>
-            <input className="border py-2 w-60 text-center outline-none" placeholder="Apr 20, 2026" type="text"></input>
-          </div>
-          <div>
-            <select className="border py-2 w-60 text-center outline-none"><option value="2000-02-01T07:30:00">7 : 30 AM</option><option value="2000-02-01T08:00:00">8:00 AM</option><option value="2000-02-01T08:30:00">8:30 AM</option><option value="2000-02-01T09:00:00">9:00 AM</option><option value="2000-02-01T09:30:00">9:30 AM</option><option value="2000-02-01T10:00:00">10:00 AM</option><option value="2000-02-01T10:30:00">10:30 AM</option><option value="2000-02-01T11:00:00">11:00 AM</option><option value="2000-02-01T11:30:00">11:30 AM</option><option value="2000-02-01T12:00:00">12:00 PM</option><option value="2000-02-01T12:30:00">12:30 PM</option><option value="2000-02-01T13:00:00">1:00 PM</option><option value="2000-02-01T13:30:00">1:30 PM</option><option value="2000-02-01T14:00:00">2:00 PM</option><option value="2000-02-01T14:30:00">2:30 PM</option><option value="2000-02-01T15:00:00">3:00 PM</option><option value="2000-02-01T15:30:00">3:30 PM</option><option value="2000-02-01T16:00:00">4:00 PM</option><option value="2000-02-01T16:30:00">4:30 PM</option><option value="2000-02-01T17:00:00">5:00 PM</option><option value="2000-02-01T17:30:00">5:30 PM</option><option value="2000-02-01T18:00:00">6:00 PM</option><option value="2000-02-01T18:30:00">6:30 PM</option><option value="2000-02-01T19:00:00">7:00 PM</option><option value="2000-02-01T19:30:00">7:30 PM</option><option value="2000-02-01T20:00:00">8:00 PM</option><option value="2000-02-01T20:30:00">8:30 PM</option><option value="2000-02-01T21:00:00">9:00 PM</option><option value="2000-02-01T21:30:00">9:30 PM</option><option value="2000-02-01T22:00:00">10:00 PM</option><option value="2000-02-01T22:30:00">10:30 PM</option><option value="2000-02-01T23:00:00">11:00 PM</option><option value="2000-02-01T23:30:00">11:30 PM</option></select>
-          </div>
-          <div>
-            <select className="border py-2 w-60 text-center outline-none"><option value="1">1 person</option><option value="2">2 people</option><option value="3">3 people</option><option value="4">4 people</option><option value="5">5 people</option><option value="6">6 people</option><option value="7">7 people</option><option value="8">8 people</option><option value="9">9 people</option><option value="10">10 people</option><option value="11">11 people</option><option value="12">12 people</option><option value="13">13 people</option><option value="14">14 people</option><option value="15">15 people</option><option value="16">16 people</option><option value="17">17 people</option><option value="18">18 people</option><option value="19">19 people</option><option value="20">20 people</option></select>
-          </div>
-          <div>
-            <button className="py-2 w-60 bg-[#886e42] text-white border border-black cursor-pointer">Book a Table</button>
-          </div>
-        </div>
-      </div>
+  <div className="grid justify-center gap-4">
+    <input
+      type="date"
+      className="border py-2 w-60 text-center outline-none"/>
+    <input type="time"
+      className="border py-2 w-60 text-center outline-none"/>
+    <input type="number"
+      min="1"
+      max="20"
+      placeholder="Number of people"
+      className="border py-2 w-60 text-center outline-none"/>
+    <button className="py-2 w-60 bg-[#886e42] text-white border border-black cursor-pointer">
+      Book a Table
+    </button>
+
+  </div>
+</div>
 
 
 
